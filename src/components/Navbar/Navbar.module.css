@@ -1,0 +1,20 @@
+.nav {
+    grid-area: n;
+    background-color: darkorange;
+    padding: 15px;
+
+}
+
+.item {
+    color: black;
+    font-weight: bold;
+    font-size: x-large;
+}
+
+.item a {
+    color: black;
+    text-decoration: none;
+}
+.item a.active {
+    color: yellow;
+}

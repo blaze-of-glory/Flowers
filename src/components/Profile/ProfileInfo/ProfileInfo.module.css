@@ -1,0 +1,34 @@
+.descriptionBlock {
+    padding: 10px;
+}
+
+.fullName {
+    font-weight: bold;
+    position: relative;
+    left: 350px;
+    font-size: 25px;
+}
+
+.aboutMe {
+    position: relative;
+    left: 375px;
+    font-style: italic;
+}
+
+.avatar {
+    position: relative;
+    left: 300px;
+}
+
+.lookingForAJob {
+    position: relative;
+    left: 375px;
+    font-style: italic;
+    color: red;
+    font-weight: bold;
+}
+
+.lookingForAJobDescription {
+    position: relative;
+    left: 375px;
+}
