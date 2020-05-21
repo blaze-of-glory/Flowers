@@ -1,6 +1,7 @@
 import React from 'react';
 import s from "./ProfileInfo.module.css";
 import Preloader from "../../common/Preloader/Preloader";
+import userBasicPhoto from  "../../../assets/images/user-basic.png"
 
 const ProfileInfo = (props) => {
     if (!props.profile) {
@@ -16,7 +17,9 @@ const ProfileInfo = (props) => {
     } else if (props.profile.lookingForAJob == false) {
         props.profile.lookingForAJob = 'Работаю!'
     }
-
+    if (props.profile.photos.large === null) {
+        props.profile.photos.large = userBasicPhoto;
+    }
     return (
         <div>
             <div><img
