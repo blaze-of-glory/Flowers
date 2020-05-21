@@ -9,6 +9,7 @@ import * as axios from 'axios';
 import Users from './Users';
 import Preloader from "../common/Preloader/Preloader";
 import {usersAPI} from "../../api/api";
+import {WithAuthRedirect} from "../../hoc/WithAuthRedirect";
 
 
 
@@ -48,5 +49,5 @@ let mapStateToProps = (state) => {
     }
 }
 
-export default connect(mapStateToProps,
-    {follow, unfollow, setCurrentPage, toggleFollowingProgress, getUsers })(UsersContainer);
+export default WithAuthRedirect( connect(mapStateToProps,
+    {follow, unfollow, setCurrentPage, toggleFollowingProgress, getUsers })(UsersContainer));
