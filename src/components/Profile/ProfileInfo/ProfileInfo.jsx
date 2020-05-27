@@ -3,6 +3,7 @@ import s from "./ProfileInfo.module.css";
 import Preloader from "../../common/Preloader/Preloader";
 import userBasicPhoto from  "../../../assets/images/user-basic.png"
 import ProfileStatus from "./ProfileStatus";
+import Profile from "../Profile";
 
 const ProfileInfo = (props) => {
     if (!props.profile) {
@@ -41,7 +42,7 @@ const ProfileInfo = (props) => {
                 <div className={s.lookingForAJobDescription}>
                     Дополнение: {props.profile.lookingForAJobDescription}
                 </div>
-                <ProfileStatus status={'Hola,Amigos!'}/>
+                <ProfileStatus status={props.status}  updateStatus={props.updateStatus}/>
             </div>
         </div>
     )
