@@ -1,5 +1,4 @@
-const ADD_MESSAGE = 'ADD-MESSAGE';
-const UPDATE_NEW_MESSAGE_TEXT = 'UPDATE-NEW-MESSAGE-TEXT';
+const SEND_MESSAGE = 'SEND-MESSAGE';
 
 let initialState = {
     messages: [
@@ -26,36 +25,25 @@ let initialState = {
             avatar: 'https://upload.wikimedia.org/wikipedia/commons/thumb/a/a8/Cannabis_leaf.svg/120px-Cannabis_leaf.svg.png'
         }
     ],
-    newMessageText: 'Flowers.com',
 }
 
 const dialogsReducer = (state = initialState,action) => {
 
     switch (action.type) {
-        case ADD_MESSAGE:
+        case SEND_MESSAGE:
             let newMessage = {
                 id: 4,
-                message: state.newMessageText,
+                message: action.newMessageText,
             };
              return {
                 ...state,
-                newMessageText : '',
                 messages:[...state.messages,newMessage ]
-            };
-
-        case UPDATE_NEW_MESSAGE_TEXT:
-            return {
-                ...state,
-                newMessageText : action.newText,
             };
 
         default: return state;
     }
 };
 
-export const addMessageActionCreator = () => ({type: ADD_MESSAGE,});
-export const updateNewMessageText = (text) => ({
-    type:UPDATE_NEW_MESSAGE_TEXT, newText: text,
-});
+export const sendMessageActionCreator = (newMessageText) => ({type: SEND_MESSAGE, newMessageText});
 
 export default dialogsReducer;
