@@ -23,8 +23,9 @@ class App extends React.Component {
     }
 
     render() {
-        if (!this.props.initialized){
-        return <Preloader/>}
+        if (!this.props.initialized) {
+            return <Preloader/>
+        }
 
         return (
             <BrowserRouter>
@@ -58,4 +59,4 @@ const mapStateToProps = (state) => ({
 
 export default compose(
     withRouter,
-    connect (mapStateToProps,{initializeApp}))(App);
+    connect(mapStateToProps, {initializeApp}))(App);
