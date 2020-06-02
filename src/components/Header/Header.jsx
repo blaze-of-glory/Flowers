@@ -6,7 +6,7 @@ const Header = (props) => {
     return (
         <header className={s.header}>
             <img src="https://i1.wp.com/honeybrook.cc/wp-content/uploads/2014/09/Close-up-Mode-100.png?w=1080" alt=""/>
-            <h1>FLOWERS</h1>
+            <h1>FLOWER-POWER</h1>
 
             <div className={s.loginBlock}>
                 {props.isAuth
