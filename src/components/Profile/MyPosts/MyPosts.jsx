@@ -9,7 +9,8 @@ const maxLength = maxLengthCreator(10);
 const minLength = minLengthCreator(2);
 
 
-const MyPosts = (props) => {
+const MyPosts = React.memo(props => {
+    console.log("RENDER YO")
     let postsElements = props.posts.map(p => <Post message={p.message} likeCounts={p.likeCounts}key={p.id}/>);
 
     let addPostText = (value) => {
@@ -26,7 +27,7 @@ const MyPosts = (props) => {
             </div>
         </div>
     )
-};
+});
 
 const AddPostForm = (props) => {
     return (
