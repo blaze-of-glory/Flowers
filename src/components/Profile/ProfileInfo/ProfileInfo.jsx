@@ -6,22 +6,22 @@ import ProfileStatus from "./ProfileStatus";
 import Profile from "../Profile";
 import ProfileStatusWithHooks from "./ProfileStatusWithHooks";
 
-const ProfileInfo = (props) => {
-    if (!props.profile) {
+const ProfileInfo = ({profile,status,updateStatus}) => {
+    if (!profile) {
         return <Preloader/>
     }
 
-    if (props.profile.fullName === 'samurai dimych') {
-        props.profile.fullName = 'Сенсей Дмитрий'
+    if (profile.fullName === 'samurai dimych') {
+        profile.fullName = 'Сенсей Дмитрий'
     }
 
-    if (props.profile.lookingForAJob == true) {
-        props.profile.lookingForAJob = 'Ищу работу!'
-    } else if (props.profile.lookingForAJob == false) {
-        props.profile.lookingForAJob = 'Работаю!'
+    if (profile.lookingForAJob == true) {
+        profile.lookingForAJob = 'Ищу работу!'
+    } else if (profile.lookingForAJob == false) {
+        profile.lookingForAJob = 'Работаю!'
     }
-    if (props.profile.photos.large === null) {
-        props.profile.photos.large = userBasicPhoto;
+    if (profile.photos.large === null) {
+        profile.photos.large = userBasicPhoto;
     }
     return (
         <div>
@@ -30,20 +30,20 @@ const ProfileInfo = (props) => {
                 alt=""/>
             </div>
             <div className={s.descriptionBlock}>
-                <img className={s.avatar} src={props.profile.photos.large} alt=""/>
+                <img className={s.avatar} src={profile.photos.large} alt=""/>
                 <div className={s.fullName}>
-                    {props.profile.fullName}
+                    {profile.fullName}
                 </div>
                 <div className={s.aboutMe}>
-                    О себе: {props.profile.aboutMe}
+                    О себе: {profile.aboutMe}
                 </div>
                 <div className={s.lookingForAJob}>
-                    Статус: {props.profile.lookingForAJob}
+                    Статус: {profile.lookingForAJob}
                 </div>
                 <div className={s.lookingForAJobDescription}>
-                    Дополнение: {props.profile.lookingForAJobDescription}
+                    Дополнение: {profile.lookingForAJobDescription}
                 </div>
-                <ProfileStatusWithHooks status={props.status}  updateStatus={props.updateStatus}/>
+                <ProfileStatusWithHooks status={status}  updateStatus={updateStatus}/>
             </div>
         </div>
     )
