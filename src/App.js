@@ -1,11 +1,11 @@
 import React from 'react';
 import './App.css';
 import Navbar from "./components/Navbar/Navbar";
-import Music from "./components/Music/Music";
-import News from "./components/News/News";
-import Settings from "./components/Settings/Settings";
+/*import Music from "./components/Music/Music";*/
+/*import News from "./components/News/News";*/
+/*import Settings from "./components/Settings/Settings";*/
 import {Route, withRouter} from "react-router-dom";
-import DialogsContainer from "./components/Dialogs/DialogsContainer";
+/*import DialogsContainer from "./components/Dialogs/DialogsContainer";*/
 import UsersContainer from "./components/Users/UsersContainer";
 import ProfileContainer from "./components/Profile/ProfileContainer";
 import HeaderContainer from "./components/Header/HeaderContainer";
@@ -14,6 +14,13 @@ import {connect} from "react-redux";
 import {compose} from "redux";
 import {initializeApp} from "./redux/app-reducer";
 import Preloader from "./components/common/Preloader/Preloader";
+import {withSuspense} from "./hoc/withSuspense";
+
+const Music = React.lazy(() => import('./components/Music/Music'));
+const News = React.lazy(() => import('./components/News/News'));
+const Settings = React.lazy(() => import('./components/Settings/Settings'));
+const DialogsContainer = React.lazy(() => import('./components/Dialogs/DialogsContainer'));
+
 
 
 class App extends React.Component {
@@ -34,15 +41,15 @@ class App extends React.Component {
                     <Navbar/>
                     <div className='app-wrapper-content'>
                         <Route path='/dialogs'
-                               render={() => <DialogsContainer/>}/>
+                               render={withSuspense(DialogsContainer)}/>
                         <Route path='/profile/:userId?'
                                render={() => <ProfileContainer/>}/>
                         <Route path='/music'
-                               render={() => <Music/>}/>
+                               render={withSuspense(Music)}/>
                         <Route path='/news'
-                               render={() => <News/>}/>
+                               render={withSuspense(News)}/>
                         <Route path='/settings'
-                               render={() => <Settings/>}/>
+                               render={withSuspense(Settings)}/>
                         <Route path='/users'
                                render={() => <UsersContainer/>}/>
                         <Route path='/login'
