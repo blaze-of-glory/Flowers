@@ -2,11 +2,9 @@ import React from 'react';
 import s from "./ProfileInfo.module.css";
 import Preloader from "../../common/Preloader/Preloader";
 import userBasicPhoto from  "../../../assets/images/user-basic.png"
-import ProfileStatus from "./ProfileStatus";
-import Profile from "../Profile";
 import ProfileStatusWithHooks from "./ProfileStatusWithHooks";
 
-const ProfileInfo = ({profile,status,updateStatus}) => {
+const ProfileInfo = ({profile,status,updateStatus,isOwner,savePhoto}) => {
     if (!profile) {
         return <Preloader/>
     }
@@ -20,9 +18,13 @@ const ProfileInfo = ({profile,status,updateStatus}) => {
     } else if (profile.lookingForAJob == false) {
         profile.lookingForAJob = 'Работаю!'
     }
-    if (profile.photos.large === null) {
-        profile.photos.large = userBasicPhoto;
+
+    const onMainPhotoSelected = (e) => {
+        if (e.target.files.length) {
+            savePhoto(e.target.files[0]);
+        }
     }
+
     return (
         <div>
             <div><img
@@ -30,7 +32,8 @@ const ProfileInfo = ({profile,status,updateStatus}) => {
                 alt=""/>
             </div>
             <div className={s.descriptionBlock}>
-                <img className={s.avatar} src={profile.photos.large} alt=""/>
+                <img className={s.avatar} src={profile.photos.large || userBasicPhoto} alt="avatar"/>
+                { isOwner && <input type={"file"} onChange={onMainPhotoSelected} className={s.avatarLoader} />}
                 <div className={s.fullName}>
                     {profile.fullName}
                 </div>

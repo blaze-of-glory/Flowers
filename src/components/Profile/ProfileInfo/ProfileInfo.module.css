@@ -32,3 +32,8 @@
     position: relative;
     left: 375px;
 }
+
+.avatarLoader {
+    position: relative;
+    float: right;
+}
