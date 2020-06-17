@@ -11,7 +11,7 @@ const minLength = minLengthCreator(2);
 
 const MyPosts = React.memo(props => {
     console.log("RENDER YO")
-    let postsElements = props.posts.map(p => <Post message={p.message} likeCounts={p.likeCounts}key={p.id}/>);
+    let postsElements = props.posts.map(p => <Post key={p.id} message={p.message} likeCounts={p.likeCounts}key={p.id}/>);
 
     let addPostText = (value) => {
         props.addPost(value.newPostText)

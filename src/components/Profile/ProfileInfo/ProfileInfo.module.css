@@ -37,3 +37,9 @@
     position: relative;
     float: right;
 }
+.yes {
+    content: '\2713';
+}
+.no {
+    content: '\2717';
+}
